@@ -19,10 +19,20 @@ Spin up this Node.js app in Docker or as a standalone app to create custom endpo
 <br />
 
 ## 📚 Full Documentation with Examples
-Find the complete guide at [https://dynamicendpoint.leighonline.net](https://dynamicendpoint.leighonline.net) (redirects to Postman documentation).
+Find the complete guide at [https://dynamicendpoint.leighonline.net/documentation](https://dynamicendpoint.leighonline.net/documentation) (redirects to Postman documentation).
 
 ---
 <br />
+
+## 🔠 Environment Variables
+You will need to create the following environment variables:
+- **DYNAMIC_EP_ADMIN_KEY** == the secret admin key to view all endpoints
+- **DYNAMIC_EP_HOSTNAME** == the hostname express must listen on
+- **DYNAMIC_EP_PORT** || 3000 == the port express must listen on
+
+---
+<br />
+
 
 ## 🔧 Endpoint Configuration Keys
 
