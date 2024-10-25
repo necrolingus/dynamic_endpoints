@@ -1,8 +1,28 @@
-# 🚀 Create dynamic endpoints to mock and test REST APIs quickly and easily
+# 🚀 Create dynamic REST endpoints the easy way
 
 Spin up this Node.js app in Docker or as a standalone app to create custom endpoints and run tests against them. Its only dependency is Express. 🧪
 
-### 🌟 **Features**
+---
+<br />
+
+
+## 📚 Documentation with Examples
+Check it out [https://dynamicendpoint.leighonline.net/documentation](https://dynamicendpoint.leighonline.net/documentation) (redirects to Postman documentation).
+
+---
+<br />
+
+
+## 🤩 Try it out!
+But read the documentation first 🎓😎
+
+https://dynamicendpoint.leighonline.net/api/  🎉🥳🎊🎁
+
+---
+<br />
+
+
+## 🌟 **Features**
 - **Flexible HTTP Support**: Each endpoint is unique across `myUniqueKey`, `endpoint`, and `verb` values, allowing the same endpoint path to respond on multiple HTTP verbs (e.g., `PUT`, `DELETE`, `GET`) with different response codes, messages, and delays.
 - **Project Segregation**: Use `myUniqueKey` to separate your projects 🗂️.
 - **Customizable Responses**: 
@@ -18,11 +38,6 @@ Spin up this Node.js app in Docker or as a standalone app to create custom endpo
 
 <br />
 
-## 📚 Full Documentation with Examples
-Find the complete guide at [https://dynamicendpoint.leighonline.net/documentation](https://dynamicendpoint.leighonline.net/documentation) (redirects to Postman documentation).
-
----
-<br />
 
 ## 🔠 Environment Variables
 You will need to create the following environment variables:
@@ -34,9 +49,8 @@ You will need to create the following environment variables:
 <br />
 
 
-## 🔧 Endpoint Configuration Keys
-
-Each endpoint requires the following JSON keys:
+## 🔧 Dynamic Endpoint JSON Keys
+Each endpoint requires the following JSON keys. You can get more information in the documentation:
 - **`myUniqueKey`** 🗝️: Exactly 16 characters. Unique to you and all your endpoints, useful for organizing by project or incident.
 - **`endpoint`** 🛠️: The endpoint path, such as `/my/endpoint`. Combined with `myUniqueKey` for the full endpoint.
 - **`httpVerb`** 🔀: The HTTP method you’ll use, such as `GET`, `POST`, `PATCH`, `PUT`, or `DELETE`.
@@ -47,10 +61,11 @@ Each endpoint requires the following JSON keys:
 ---
 <br />
 
-## 📄 **Example: Creating an Endpoint**
+
+## 📄 **Example: Create a dynamic endpoint**
 
 ```bash
-curl --location 'http://<ip here>/create-endpoint' \
+curl --location 'http://<ip here>/api/create-endpoint' \
 --header 'Content-Type: application/json' \
 --data '{
     "myUniqueKey": "proj1_20241024__", 
@@ -62,15 +77,13 @@ curl --location 'http://<ip here>/create-endpoint' \
 }'
 ```
 
-<br />
-
-## 📄 **Example: Calling the Endpoint**
+#### 📄 **Now call this endpoint**
 
 ```bash
-curl --location --request GET 'http://<ip here>/proj1_20241024__/my/endpoint/ratelimit'
+curl --location --request GET 'http://<ip here>/api/proj1_20241024__/my/endpoint/ratelimit'
 ```
 
-#### 📄 **Example: Response from the Endpoint**
+#### 📄 **The response from this endpoint**
 
 ```json
 {
