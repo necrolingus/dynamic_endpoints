@@ -1,59 +1,69 @@
-# Create dynamic Endpoints to mock and test REST APIs
+# 🚀 Create Dynamic Endpoints to Mock and Test REST APIs
 
-Quickly and easily spin up this NodeJS code which will allow you to create any endpoint and run tests against it. 
+Quickly and easily spin up this Node.js app to create custom endpoints and run tests against them. 🧪
 
-**This app has the following features:**
-- Each endpoint is unique across the myUniqueKey, endpoint, and verb values. This means you can have an endpoint called /my/endpoint that can respond on e.g. PUT, DELETE, and GET. Each endpoint can respond with a different response code and message, and have different delays.
-- Specify a unique key to segregate your projects
-- Create endpoints that will listen on pretty much any HTTP verb
-- Send back static JSON responses
-- Send back any response code
-- Add delays to your endpoints
-- List all your endpoints and see how many times they were called
-- Overwrite an existing endpoint with new data
-- Delete all the endpoints for a specific unique key
-- Host in docker or your local machine.
-- **Admin**: List all endpoints on the system
+### 🌟 **Features**
+- **Flexible HTTP Support**: Each endpoint is unique across `myUniqueKey`, `endpoint`, and `verb` values, allowing the same endpoint path to respond on multiple HTTP verbs (e.g., `PUT`, `DELETE`, `GET`) with different response codes, messages, and delays.
+- **Project Segregation**: Use `myUniqueKey` to separate your projects 🗂️.
+- **Customizable Responses**: 
+   - Respond with any **HTTP code** (e.g., 200, 404, 500)
+   - Return any **JSON payload** 💾
+   - Add **delays** up to 10 seconds 🕒
+- **Endpoint Management**:
+   - List all endpoints and view call counts 📊
+   - Update an existing endpoint’s configuration
+   - Delete all endpoints associated with a specific unique key 🧹
+- **Deployment Flexibility**: Run locally or in Docker 🐳.
+- **Admin Tools**: Admins can list all endpoints on the system 🔐.
+
 <br />
 
-## Full documentation with examples
-https://dynamicendpoint.leighonline.net (it will redirect you to the Postman documentation)
-<br />
-<br />
+## 📚 Full Documentation with Examples
+Find the complete guide at [https://dynamicendpoint.leighonline.net](https://dynamicendpoint.leighonline.net) (redirects to Postman documentation).
+
+---
 <br />
 
-## Creating an Endpoint JSON keys
-- **myUniqueKey**: Must be exactly 16 characters. This will be unique to you and all your endpoints. Use it to segregate e.g. projects or incidents.
-- **endpoint**: e.g. /my/endpoint. Concatenate **myUniqueKey** with this value to get your full endpoint. 
-- **httpVerb**: e.g. GET, POST, PATCH, PUT,or DELETE. You need to call this endpoint as the verb you specify here.
-- **responseCode**: The response code you want this endpoint to return.
-- **responseBodyInJson**: The JSON you want this endpoint to return.
-- **responseDelay**: Delay in milliseconds, maximum 10 seconds. Useful to test timeouts and such.
+## 🔧 Endpoint Configuration Keys
+
+Each endpoint requires the following JSON keys:
+- **`myUniqueKey`** 🗝️: Exactly 16 characters. Unique to you and all your endpoints, useful for organizing by project or incident.
+- **`endpoint`** 🛠️: The endpoint path, such as `/my/endpoint`. Combined with `myUniqueKey` for the full endpoint.
+- **`httpVerb`** 🔀: The HTTP method you’ll use, such as `GET`, `POST`, `PATCH`, `PUT`, or `DELETE`.
+- **`responseCode`** ✅: HTTP response code you want the endpoint to return.
+- **`responseBodyInJson`** 📄: The JSON object that this endpoint will return in the response.
+- **`responseDelay`** 🕰️: Delay the response in milliseconds, up to 10,000 (10 seconds) for testing timeouts.
+
+---
 <br />
 
-## Example to create an Endpoint
-```
+## 📄 **Example: Creating an Endpoint**
+
+```bash
 curl --location 'http://<ip here>/create-endpoint' \
+--header 'Content-Type: application/json' \
 --data '{
-    "myUniqueKey": "proj1_20241024__", //Must be exactly 16 characters. This will be unique to you and all your endpoints
-    "endpoint": "/my/endpoint/ratelimit", //Concatenate myUniqueKey with this value e.g. /aaaaaabbbbbccccc/my/endpoint
-    "httpVerb": "GET", //You need to call this endpoint as a POST
-    "responseCode": 429, //Will always be returned in the response
-    "responseBodyInJson": { "message": "you shall not pass!!" }, //Will always be returned in the response
-    "responseDelay": 2000 //Delay the response by this much. Useful to test timeouts and such
-}
-'
+    "myUniqueKey": "proj1_20241024__", 
+    "endpoint": "/my/endpoint/ratelimit", 
+    "httpVerb": "GET", 
+    "responseCode": 429, 
+    "responseBodyInJson": { "message": "you shall not pass!!" }, 
+    "responseDelay": 2000 
+}'
 ```
+
 <br />
 
-### Now call that Endpoint
-```
-curl --location --request POST 'http://<ip here>/proj1_20241024__/my/endpoint'
+## 📄 **Example: Calling the Endpoint**
+
+```bash
+curl --location --request GET 'http://<ip here>/proj1_20241024__/my/endpoint/ratelimit'
 ```
 
-#### Response from that Endpoint
-```
+#### 📄 **Example: Response from the Endpoint**
+
+```json
 {
-  "message": "Success!"
+  "message": "you shall not pass!!"
 }
 ```
