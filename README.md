@@ -3,6 +3,7 @@
 Quickly and easily spin up this NodeJS code which will allow you to create any endpoint and run tests against it. 
 
 **This app has the following features:**
+- Each endpoint is unique across the myUniqueKey, endpoint, and verb values. This means you can have an endpoint called /my/endpoint that can respond on e.g. PUT, DELETE, and GET. Each endpoint can respond with a different response code and message, and have different delays.
 - Specify a unique key to segregate your projects
 - Create endpoints that will listen on pretty much any HTTP verb
 - Send back static JSON responses
