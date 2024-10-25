@@ -4,7 +4,7 @@ app.use(express.json());
 
 //Express variables
 const adminKeyEnv = process.env.DYNAMIC_EP_ADMIN_KEY
-const hostname = process.env.DYNAMIC_EP_HOSTNAME
+const hostname = process.env.DYNAMIC_EP_HOSTNAME || '0.0.0.0'
 const port = process.env.DYNAMIC_EP_PORT || 3000
 
 
