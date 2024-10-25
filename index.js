@@ -2,27 +2,35 @@ const express = require('express');
 const app = express();
 app.use(express.json());
 
+//Express variables
+const adminKeyEnv = process.env.DYNAMIC_EP_ADMIN_KEY
+const hostname = process.env.DYNAMIC_EP_HOSTNAME
+const port = process.env.DYNAMIC_EP_PORT || 3000
 
-//Store routes under each unique key
+
+// Store routes under each unique key
 const routeRegistry = {};
 
-
-//Function to remove a specific route
+// Function to remove a specific route
 function removeRoute(httpVerb, fullEndpoint) {
     app._router.stack = app._router.stack.filter(layer => {
         return !(layer.route && layer.route.path === fullEndpoint && layer.route.methods[httpVerb.toLowerCase()]);
     });
 }
 
-//API to create or update an endpoint
-app.post('/create-endpoint', (req, res) => {
+// Create an Express Router
+const apiRouter = express.Router();
+
+// API to create or update an endpoint
+apiRouter.post('/create-endpoint', (req, res) => {
     const { myUniqueKey, endpoint, httpVerb, responseCode, responseBodyInJson, responseDelay } = req.body;
 
     if (!myUniqueKey || myUniqueKey.length !== 16 || !endpoint || !httpVerb || !responseCode || !responseBodyInJson) {
         return res.status(400).json({ error: "Missing or invalid required fields" });
     }
 
-    const fullEndpoint = `/${myUniqueKey}${endpoint}`;
+    // Prefix dynamic endpoints with `/api`
+    const fullEndpoint = `/api/${myUniqueKey}${endpoint}`;
     const delay = Math.min(responseDelay || 0, 10000);
 
     // Ensure routeRegistry[myUniqueKey] is initialized
@@ -55,9 +63,8 @@ app.post('/create-endpoint', (req, res) => {
     res.status(201).json({ message: `Route ${httpVerb} ${fullEndpoint} created or updated` });
 });
 
-
-//API to retrieve all endpoints for a given myUniqueKey
-app.get('/list-endpoints/:myUniqueKey', (req, res) => {
+// API to retrieve all endpoints for a given myUniqueKey
+apiRouter.get('/list-endpoints/:myUniqueKey', (req, res) => {
     const { myUniqueKey } = req.params;
     
     if (!routeRegistry[myUniqueKey]) {
@@ -67,20 +74,18 @@ app.get('/list-endpoints/:myUniqueKey', (req, res) => {
     res.json({ endpoints: routeRegistry[myUniqueKey] });
 });
 
-
-//Admin endpoint to see all endpoints
-app.get('/admin/list-all-endpoints', (req, res) => {
+// Admin endpoint to see all endpoints
+apiRouter.get('/admin/list-all-endpoints', (req, res) => {
     const adminKey = req.headers['admin-key'];
 
-    if (adminKey !== process.env.ADMIN_KEY) {
+    if (adminKey !== adminKeyEnv) {
         return res.status(403).json({ error: "Unauthorized access" });
     }
     res.json({ endpoints: routeRegistry });
 });
 
-
 // API to delete all endpoints for a given myUniqueKey
-app.delete('/delete-endpoints/:myUniqueKey', (req, res) => {
+apiRouter.delete('/delete-endpoints/:myUniqueKey', (req, res) => {
     const { myUniqueKey } = req.params;
 
     if (!routeRegistry[myUniqueKey]) {
@@ -98,9 +103,11 @@ app.delete('/delete-endpoints/:myUniqueKey', (req, res) => {
     res.status(200).json({ message: `All endpoints for unique key ${myUniqueKey} have been deleted.` });
 });
 
+// Mount the API router under /api
+app.use('/api', apiRouter);
+
 
 //Start express
-const port = 3000;
-app.listen(port, () => {
-    console.log(`Server listening on port ${port}`);
+app.listen(port, hostname, () => {
+    console.log(`Server listening on ${hostname}:${port}`);
 });
