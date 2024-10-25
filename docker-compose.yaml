@@ -1,0 +1,8 @@
+version: "3"
+services:
+  nodejs_dynamic_rest_endpoints:
+    image: nodejs_dynamic_rest_endpoints:v2
+    restart: unless-stopped
+    env_file: stack.env
+    ports:
+      - 3055:3000
