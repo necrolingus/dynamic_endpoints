@@ -1,1 +1,1 @@
-docker build -f dockerfile . --tag nodejs_dynamic_rest_endpoints:v2
+docker build -f dockerfile . --tag nodejs_dynamic_rest_endpoints:v3 --no-cache
