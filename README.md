@@ -24,6 +24,16 @@ Find the complete guide at [https://dynamicendpoint.leighonline.net/documentatio
 ---
 <br />
 
+## 🔠 Environment Variables
+You will need to create the following environment variables:
+- **DYNAMIC_EP_ADMIN_KEY** == the secret admin key to view all endpoints
+- **DYNAMIC_EP_HOSTNAME** == the hostname express must listen on
+- **DYNAMIC_EP_PORT** || 3000 == the port express must listen on
+
+---
+<br />
+
+
 ## 🔧 Endpoint Configuration Keys
 
 Each endpoint requires the following JSON keys:
