@@ -103,6 +103,11 @@ apiRouter.delete('/delete-endpoints/:myUniqueKey', (req, res) => {
     res.status(200).json({ message: `All endpoints for unique key ${myUniqueKey} have been deleted.` });
 });
 
+// Respond with a static message on the /api root
+app.get('/api', (req, res) => {
+    res.send("Website coming soon! Check out the documentation at https://github.com/necrolingus/dynamic_endpoints for usage details.");
+});
+
 // Mount the API router under /api
 app.use('/api', apiRouter);
 
