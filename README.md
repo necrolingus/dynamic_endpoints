@@ -26,9 +26,9 @@ Find the complete guide at [https://dynamicendpoint.leighonline.net/documentatio
 
 ## 🔠 Environment Variables
 You will need to create the following environment variables:
-- **DYNAMIC_EP_ADMIN_KEY** == the secret admin key to view all endpoints
-- **DYNAMIC_EP_HOSTNAME** == the hostname express must listen on
-- **DYNAMIC_EP_PORT** || 3000 == the port express must listen on
+- **DYNAMIC_EP_ADMIN_KEY** == the secret admin key to view all endpoints.
+- **DYNAMIC_EP_HOSTNAME** || '0.0.0.0' == the hostname express must listen on. For the most part '0.0.0.0' is fine.
+- **DYNAMIC_EP_PORT** || 3000 == the port express must listen on. For the most part 3000 is fine. If you do change it, update your docker compose file.
 
 ---
 <br />
