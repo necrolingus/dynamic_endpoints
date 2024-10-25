@@ -62,7 +62,7 @@ Each endpoint requires the following JSON keys. You can get more information in 
 <br />
 
 
-## 📄 **Example: Create a dynamic endpoint**
+## 🤤 **Teaser: Create a dynamic endpoint**
 
 ```bash
 curl --location 'http://<ip here>/api/create-endpoint' \
