@@ -16,7 +16,7 @@ Quickly and easily spin up this NodeJS code which will allow you to create any e
 <br />
 
 ## Full documentation with examples
-https://documenter.getpostman.com/view/3224442/2sAY4si4U1 
+https://dynamicendpoint.leighonline.net (it will redirect you to the Postman documentation)
 <br />
 <br />
 <br />
