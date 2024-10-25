@@ -19,7 +19,7 @@ Spin up this Node.js app in Docker or as a standalone app to create custom endpo
 <br />
 
 ## 📚 Full Documentation with Examples
-Find the complete guide at [https://dynamicendpoint.leighonline.net](https://dynamicendpoint.leighonline.net) (redirects to Postman documentation).
+Find the complete guide at [https://dynamicendpoint.leighonline.net/documentation](https://dynamicendpoint.leighonline.net/documentation) (redirects to Postman documentation).
 
 ---
 <br />
