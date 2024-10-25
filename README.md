@@ -1,6 +1,6 @@
-# 🚀 Create Dynamic Endpoints to Mock and Test REST APIs
+# 🚀 Create dynamic endpoints to mock and test REST APIs quickly and easily
 
-Quickly and easily spin up this Node.js app to create custom endpoints and run tests against them. 🧪
+Spin up this Node.js app in Docker or as a standalone app to create custom endpoints and run tests against them. Its only dependency is Express. 🧪
 
 ### 🌟 **Features**
 - **Flexible HTTP Support**: Each endpoint is unique across `myUniqueKey`, `endpoint`, and `verb` values, allowing the same endpoint path to respond on multiple HTTP verbs (e.g., `PUT`, `DELETE`, `GET`) with different response codes, messages, and delays.
