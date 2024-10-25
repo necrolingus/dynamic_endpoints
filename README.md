@@ -84,6 +84,7 @@ curl --location --request GET 'http://<ip here>/api/proj1_20241024__/my/endpoint
 ```
 
 #### 📄 **The response from this endpoint**
+It will be 429 response and there will be a 2 second delay.
 
 ```json
 {
