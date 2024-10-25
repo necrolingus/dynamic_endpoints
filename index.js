@@ -105,7 +105,8 @@ apiRouter.delete('/delete-endpoints/:myUniqueKey', (req, res) => {
 
 // Respond with a static message on the /api root
 app.get('/api', (req, res) => {
-    res.send("Website coming soon! Check out the documentation at https://github.com/necrolingus/dynamic_endpoints for usage details.");
+    res.send(`Website coming soon! Check out the documentation at 
+            <a href="https://github.com/necrolingus/dynamic_endpoints">https://github.com/necrolingus/dynamic_endpoints</a> for usage details.`);
 });
 
 // Mount the API router under /api

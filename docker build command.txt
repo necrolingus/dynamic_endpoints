@@ -1,0 +1,2 @@
+In case you want to build it locally
+docker build -f dockerfile . --tag nodejs_dynamic_rest_endpoints:latest --no-cache

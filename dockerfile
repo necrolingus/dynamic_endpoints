@@ -15,7 +15,7 @@ RUN npm install --production
 # Bundle app source
 COPY . .
 
-#my app.js says express must run on port 3000
+#my code says express must run on port 3000
 EXPOSE 3000
 
 #run the app
