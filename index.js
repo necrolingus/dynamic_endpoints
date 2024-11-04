@@ -1,16 +1,15 @@
 import express from 'express'
 import { headers } from './middleware/headers.js'
 const app = express()
+
 app.use(express.json())
+app.disable('x-powered-by');
 app.use(headers)
-
-
 
 //Express variables
 const adminKeyEnv = process.env.DYNAMIC_EP_ADMIN_KEY
 const hostname = process.env.DYNAMIC_EP_HOSTNAME || '0.0.0.0'
 const port = process.env.DYNAMIC_EP_PORT || 3000
-
 
 // Store routes under each unique key
 const routeRegistry = {};
@@ -115,7 +114,6 @@ app.get('/api', (req, res) => {
 
 // Mount the API router under /api
 app.use('/api', apiRouter);
-
 
 //Start express
 app.listen(port, hostname, () => {
