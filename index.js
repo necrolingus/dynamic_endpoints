@@ -1,6 +1,10 @@
-const express = require('express');
-const app = express();
-app.use(express.json());
+import express from 'express'
+import { headers } from './middleware/headers.js'
+const app = express()
+app.use(express.json())
+app.use(headers)
+
+
 
 //Express variables
 const adminKeyEnv = process.env.DYNAMIC_EP_ADMIN_KEY
