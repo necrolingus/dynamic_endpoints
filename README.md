@@ -13,14 +13,6 @@ Check it out [https://dynamicendpoint.leighonline.net/documentation](https://dyn
 <br />
 
 
-## 🤩 Try it out!
-But read the documentation first 🎓😎
-
-https://dynamicendpoint.leighonline.net/api/  🎉🥳🎊🎁
-
----
-<br />
-
 
 ## 🌟 **Features**
 - **Flexible HTTP Support**: Each endpoint is unique across `myUniqueKey`, `endpoint`, and `verb` values, allowing the same endpoint path to respond on multiple HTTP verbs (e.g., `PUT`, `DELETE`, `GET`) with different response codes, messages, and delays.
