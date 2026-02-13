@@ -1,8 +1,0 @@
-version: "3"
-services:
-  nodejs_dynamic_rest_endpoints:
-    image: ghcr.io/necrolingus/dynamic_endpoints:latest
-    restart: unless-stopped
-    env_file: stack.env
-    ports:
-      - 80:3000
