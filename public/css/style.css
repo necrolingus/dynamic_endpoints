@@ -1,0 +1,163 @@
+/* ===== Design System: Neon Theme ===== */
+:root {
+  --neon-blue: #00f3ff;
+  --neon-pink: #ff00ff;
+  --neon-green: #39ff14;
+  --neon-red: #ff0000;
+  --dark-bg: #111111;
+  --text-white: #ffffff;
+  --text-muted: rgba(255, 255, 255, 0.55);
+  --border-white: rgba(255, 255, 255, 0.15);
+  --glass-bg: rgba(255, 255, 255, 0.04);
+}
+
+/* ===== Global Reset & Body ===== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  background-color: var(--dark-bg);
+  color: var(--text-white);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Stationary dot-pattern background */
+.background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+  background-size: 24px 24px;
+  pointer-events: none;
+}
+
+/* ===== Container (Glassmorphism Card) ===== */
+.container {
+  width: 100%;
+  max-width: 600px;
+  padding: 2.6rem 2.8rem;
+  margin: 1.3rem;
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 20px;
+  border: 1px solid var(--border-white);
+  box-shadow:
+    0 0 30px rgba(0, 243, 255, 0.07),
+    0 0 60px rgba(0, 243, 255, 0.03);
+  text-align: center;
+}
+
+/* ===== Typography ===== */
+h1 {
+  font-weight: 300;
+  font-size: 1.95rem;
+  margin-bottom: 1.6rem;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: var(--text-white);
+  text-shadow: 0 0 12px var(--neon-blue), 0 0 30px rgba(0, 243, 255, 0.3);
+}
+
+/* ===== Inputs & Textareas ===== */
+input,
+select,
+textarea {
+  width: 100%;
+  padding: 16px 20px;
+  font-size: 1.15rem;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  background: transparent;
+  border: 1px solid var(--border-white);
+  border-radius: 15px;
+  color: var(--text-white);
+  transition: all 0.3s ease;
+  margin-bottom: 1rem;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--text-muted);
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--neon-blue);
+  box-shadow: 0 0 12px rgba(0, 243, 255, 0.25), 0 0 30px rgba(0, 243, 255, 0.08);
+}
+
+/* ===== Buttons ===== */
+button {
+  width: 100%;
+  padding: 14px 26px;
+  background: transparent;
+  border: 1px solid var(--border-white);
+  border-radius: 30px;
+  color: var(--text-white);
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  background: var(--neon-blue);
+  color: var(--dark-bg);
+  border-color: var(--neon-blue);
+  box-shadow: 0 0 20px var(--neon-blue), 0 0 40px rgba(0, 243, 255, 0.3);
+  font-weight: 500;
+}
+
+/* ===== Dashboard Specific ===== */
+.endpoint-card {
+  border: 1px solid var(--border-white);
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 10px;
+  text-align: left;
+}
+
+.endpoint-card h3 {
+  margin: 0 0 0.5rem 0;
+  color: var(--neon-green);
+  text-shadow: 0 0 8px rgba(57, 255, 20, 0.3);
+}
+
+.method {
+  font-weight: bold;
+  color: var(--neon-green);
+  margin-right: 0.5rem;
+}
+
+.error-message {
+  color: var(--neon-red);
+  display: none;
+  margin-top: 10px;
+  text-shadow: 0 0 8px rgba(255, 0, 0, 0.4);
+}
+
+.dashboard-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}

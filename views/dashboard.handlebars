@@ -1,0 +1,30 @@
+<div class="container">
+    <div class="dashboard-header">
+        <h1>Dashboard</h1>
+    </div>
+
+    <h2>Create Endpoint</h2>
+    <form id="create-endpoint-form">
+        <input type="text" id="myUniqueKey" placeholder="Unique Key (8-20 chars)" maxlength="20" required>
+        <input type="text" id="endpoint" placeholder="Endpoint (e.g. /users)" required>
+        <select id="httpVerb" required class="method">
+            <option value="GET">GET</option>
+            <option value="POST">POST</option>
+            <option value="PUT">PUT</option>
+            <option value="DELETE">DELETE</option>
+            <option value="PATCH">PATCH</option>
+        </select>
+        <input type="number" id="responseCode" placeholder="Response Code (e.g. 200)" value="200" required>
+        <textarea id="responseBodyInJson" rows="5" required>{"Success":true}</textarea>
+        <input type="number" id="responseDelay" placeholder="Response Delay (ms)" value="">
+        <button type="submit">Create/Update</button>
+        <div id="create-endpoint-message" style="margin-top: 10px; display: none;"></div>
+    </form>
+</div>
+
+<div class="container">
+    <h2>Active Endpoints</h2>
+    <div id="endpoints-container">
+        <!-- Endpoints will be loaded here -->
+    </div>
+</div>
