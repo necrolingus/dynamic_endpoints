@@ -13,6 +13,7 @@ Check it out [https://dynamicendpoint.leighonline.net/documentation](https://dyn
 
 
 ## 🌟 **Features**
+- **In Memory**: All endpoints stored in memory. No need for a database.
 - **Flexible HTTP Support**: Each endpoint is unique across `myUniqueKey`, `endpoint`, and `verb` values, allowing the same endpoint path to respond on `PUT`, `DELETE`, `GET` etc with different response codes, messages, and delays.
 - **Project Separation**: Use `myUniqueKey` to separate your projects 🗂️.
 - **Customizable Responses**: 
