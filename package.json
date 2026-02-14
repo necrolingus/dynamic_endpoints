@@ -16,6 +16,7 @@
     "dotenv": "^17.3.1",
     "express": "^4.21.1",
     "express-handlebars": "^8.0.6",
+    "express-rate-limit": "^8.2.1",
     "tough-cookie": "^6.0.0"
   },
   "description": ""

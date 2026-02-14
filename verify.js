@@ -29,6 +29,28 @@ async function verify() {
         }
         console.log('Login Failure passed');
 
+        console.log('Verifying Login Rate Limiting ...');
+        // We need to send > 5 requests. Let's send 10 to be sure.
+        let rateLimited = false;
+        for (let i = 0; i < 10; i++) {
+            try {
+                await axios.post(`${BASE_URL}/api/login`, {
+                    apiKey: 'wrong_key'
+                });
+            } catch (err) {
+                if (err.response && err.response.status === 429) {
+                    rateLimited = true;
+                    assert(err.response.data.error === 'Too many login attempts, please try again later');
+                    break;
+                }
+            }
+        }
+        assert(rateLimited, 'Should have been rate limited (429)');
+        console.log('Login Rate Limiting passed');
+
+        console.log('Waiting for rate limit to expire...');
+        await new Promise(resolve => setTimeout(resolve, 3000));
+
         console.log('Verifying Login Success ...');
         const loginRes = await client.post(`${BASE_URL}/api/login`, { apiKey: 'change_me_to_something_secure' });
         assert(loginRes.status === 200);

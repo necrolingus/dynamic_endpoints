@@ -1,10 +1,11 @@
 import express from 'express';
 import { createEndpoint, listEndpoints, listAllEndpoints, deleteEndpoints, login } from '../controller/endpointController.js';
+import { loginLimiter } from '../middleware/rateLimit.js';
 
 export const apiRouter = express.Router();
 
 // Login route
-apiRouter.post('/login', login);
+apiRouter.post('/login', loginLimiter, login);
 
 // Authentication is now handled globally in index.js for /api
 

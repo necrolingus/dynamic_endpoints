@@ -14,7 +14,11 @@ $(document).ready(function () {
                 window.location.href = '/dashboard';
             },
             error: function (xhr) {
-                $('#login-error').show();
+                if (xhr.status === 429) {
+                    $('#login-error').text('Too many login attempts, please try again later').show();
+                } else {
+                    $('#login-error').text('Invalid API Key').show();
+                }
             }
         });
     });
