@@ -48,8 +48,8 @@ body {
 .container {
   width: 100%;
   max-width: 600px;
-  padding: 2.6rem 2.8rem;
-  margin: 1.3rem;
+  padding: 1.6rem 1.8rem;
+  margin: 1.0rem;
   background: var(--glass-bg);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
@@ -130,8 +130,8 @@ button:hover {
 /* ===== Dashboard Specific ===== */
 .endpoint-card {
   border: 1px solid var(--border-white);
-  padding: 1rem;
-  margin-bottom: 1rem;
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
   border-radius: 10px;
   text-align: left;
 }

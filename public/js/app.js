@@ -102,6 +102,7 @@ $(document).ready(function () {
                                 <p><strong>Delay:</strong> ${route.responseDelay} ms
                                 <strong> | Response Code:</strong> ${route.responseCode}
                                 <strong> | Calls:</strong> ${route.callCount}</p>
+                                <button class="copy-btn" data-url="${route.endpoint}" style="width: auto; padding: 5px 10px; font-size: 0.8rem; margin-top: 5px; margin-right: 5px; border-color: var(--neon-blue); color: var(--neon-blue);">Copy</button>
                                 <button class="delete-btn" data-key="${key}" style="width: auto; padding: 5px 10px; font-size: 0.8rem; margin-top: 5px; border-color: var(--neon-pink); color: var(--neon-pink);">Delete</button>
                             </div>
                          `;
@@ -117,7 +118,19 @@ $(document).ready(function () {
                 $('.delete-btn').on('click', function () {
                     const key = $(this).data('key');
                     deleteEndpoints(key);
+                });
 
+                // Bind copy buttons
+                $('.copy-btn').on('click', function () {
+                    const url = $(this).data('url');
+                    const $btn = $(this);
+                    navigator.clipboard.writeText(url).then(() => {
+                        const originalText = $btn.text();
+                        $btn.text('Copied!');
+                        setTimeout(() => $btn.text(originalText), 2000);
+                    }).catch(err => {
+                        console.error('Failed to copy: ', err);
+                    });
                 });
             },
             error: function (xhr) {
