@@ -51,7 +51,8 @@ export const createEndpoint = (req, res) => {
     }
 
     // Prefix dynamic endpoints with `/api`
-    const fullEndpoint = `/api/${myUniqueKey}${endpoint}`;
+    const path = `/api/${myUniqueKey}${endpoint}`;
+    const fullEndpoint = `${req.protocol}://${req.get('host')}${path}`;
     const delay = Math.min(responseDelay || 0, 10000);
 
     // Ensure routeRegistry[myUniqueKey] is initialized
@@ -62,14 +63,14 @@ export const createEndpoint = (req, res) => {
     // Check if a route with the same endpoint and httpVerb already exists, and remove it if so
     const existingRouteIndex = routeRegistry[myUniqueKey].findIndex(route => route.endpoint === fullEndpoint && route.httpVerb === httpVerb);
     if (existingRouteIndex !== -1) {
-        removeRoute(app, httpVerb, fullEndpoint);
+        removeRoute(app, httpVerb, path);
         routeRegistry[myUniqueKey].splice(existingRouteIndex, 1);
     }
 
     // Register the new or updated route dynamically
     // Note: Dynamic endpoints themselves are NOT authenticated as per original design, 
     // but management of them is.
-    app[httpVerb.toLowerCase()](fullEndpoint, (req, res) => {
+    app[httpVerb.toLowerCase()](path, (req, res) => {
         const route = routeRegistry[myUniqueKey]?.find(route => route.endpoint === fullEndpoint && route.httpVerb === httpVerb);
         if (route) {
             route.callCount += 1; // Increment counter each time route is called
