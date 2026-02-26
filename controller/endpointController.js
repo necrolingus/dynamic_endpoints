@@ -27,11 +27,15 @@ export const login = (req, res) => {
 };
 
 export const createEndpoint = (req, res) => {
-    const { myUniqueKey, endpoint, httpVerb, responseCode, responseBodyInJson, responseDelay } = req.body;
+    let { myUniqueKey, endpoint, httpVerb, responseCode, responseBodyInJson, responseDelay } = req.body;
+
+    if (endpoint && !endpoint.startsWith('/')) {
+        endpoint = '/' + endpoint;
+    }
     const app = req.app;
 
-    if (!myUniqueKey || myUniqueKey.length < 8 || myUniqueKey.length > 20) {
-        return res.status(400).json({ error: "Unique Key must be between 8 and 20 characters" });
+    if (!myUniqueKey || myUniqueKey.length < 4 || myUniqueKey.length > 20) {
+        return res.status(400).json({ error: "Unique Key must be between 4 and 20 characters" });
     }
     if (!endpoint) {
         return res.status(400).json({ error: "Endpoint path is required" });
