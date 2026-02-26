@@ -8,8 +8,6 @@ function removeRoute(app, httpVerb, fullEndpoint) {
 }
 
 // Middleware authenticate moved to middleware/auth.js
-
-
 export const login = (req, res) => {
     const { apiKey } = req.body;
     const adminKeyEnv = process.env.DYNAMIC_EP_ADMIN_KEY;

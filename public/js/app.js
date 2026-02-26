@@ -102,7 +102,7 @@ $(document).ready(function () {
                                 <p><strong>Delay:</strong> ${route.responseDelay} ms
                                 <strong> | Response Code:</strong> ${route.responseCode}
                                 <strong> | Calls:</strong> ${route.callCount}</p>
-                                <button class="delete-btn" data-key="${key}" style="width: auto; padding: 5px 10px; font-size: 0.8rem; margin-top: 5px; border-color: var(--neon-pink); color: var(--neon-pink);">Delete All for Key</button>
+                                <button class="delete-btn" data-key="${key}" style="width: auto; padding: 5px 10px; font-size: 0.8rem; margin-top: 5px; border-color: var(--neon-pink); color: var(--neon-pink);">Delete</button>
                             </div>
                          `;
                         container.append(card);
