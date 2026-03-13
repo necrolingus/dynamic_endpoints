@@ -9,7 +9,7 @@ import { apiRouter } from './routes/api.js'
 import { uiRouter } from './routes/ui.js'
 
 const app = express()
-app.set('trust proxy', 1)
+app.set('trust proxy', parseInt(process.env.DYNAMIC_EP_NUMBER_OF_PROXIES) || 1);
 
 // Middleware
 app.use(express.json())
